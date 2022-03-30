@@ -1,7 +1,9 @@
 import { HTTP_ACCOUNT_FAIL, HTTP_ACCOUNT_FETCHING, HTTP_ACCOUNT_SUCCESS } from "../constant"
 
 const initialState = {
-    account:{},
+    account:{
+      id_emp:"2498"
+    },
     acc_isFetching:false,
     acc_isError:false
 }

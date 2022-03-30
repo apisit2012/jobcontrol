@@ -1,17 +1,24 @@
-import { SET_LOGIN, SET_LOGOUT } from "../constant"
+import { NOTUSESTACK, SET_LOGIN, SET_LOGOUT, USESTACK } from "../constant"
 
 const initialState = {
-    isLoggedIn:false,
+    isLoggedIn:true,
+    isStack:false
 }
 
 export default (state = initialState, { type }) => {
   switch (type) {
 
+  case USESTACK:
+    return { ...state, isLoggedIn:true, isStack:true }
+
+  case NOTUSESTACK:
+    return { ...state, isLoggedIn:true, isStack:false }
+
   case SET_LOGIN:
-    return { ...state, isLoggedIn:true }
+    return { ...state, isLoggedIn:true, isStack:false }
 
   case SET_LOGOUT:
-    return { ...state, isLoggedIn:false }
+    return { ...state, isLoggedIn:false, isStack:false }
 
   default:
     return state

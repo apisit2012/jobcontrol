@@ -1,4 +1,4 @@
-import {  HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FECTHING, HTTP_DASHBOARD_SUCCESS  } from "../constant";
+import {  HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FECTHING, HTTP_DASHBOARD_SUCCESS, Server  } from "../constant";
 import axios from 'axios'
 
 export const SetStateToFetching = () => ({
@@ -15,8 +15,13 @@ export const SetStateToFail = () => ({
 })
 
 export const renderpage = () => {
-  return dispatch=>{
-    dispatch(SetStateToFetching())
-    
+  return dispatch =>{
+    dispatch(SetStateToFetching());
+    axios.post(Server.Dashboard).then(response=>{
+      dispatch(SetStateToSuucess(response.data.message))
+    }).catch(err => {
+      dispatch(SetStateToFail())
+    })
+
   }
 }
